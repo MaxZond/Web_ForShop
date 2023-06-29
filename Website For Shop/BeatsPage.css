@@ -1,0 +1,42 @@
+.composition-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.composition-card {
+  width: 300px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.composition-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.composition-details {
+  margin-top: 10px;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.price {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.duration {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+audio {
+  margin-top: 10px;
+  width: 100%;
+}

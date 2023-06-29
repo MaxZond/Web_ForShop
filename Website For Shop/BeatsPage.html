@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Мои композиции</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Мои композиции</h1>
+
+  <div class="composition-container">
+
+  <?php
+    $host = 'localhost';
+    $dbname = 'mydatabase';
+    $username = 'myusername';
+    $password = 'mypassword';
+
+    $db = new PDO("pgsql:host=$host;dbname=$dbname", $username, $password);
+
+    $query = "SELECT * FROM compositions";
+    $result = $db->query($query);
+
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+      $title = $row['title'];
+      $author = $row['author'];
+      $photo = $row['photo'];
+      $price = $row['price'];
+      $duration = $row['duration'];
+      $musicFile = $row['music_file'];
+
+      echo '<div class="composition-card">';
+      echo '<div class="composition-image">';
+      echo '<img src="' . $photo . '" alt="' . $title . '">';
+      echo '</div>';
+      echo '<div class="composition-details">';
+      echo '<h2>' . $title . '</h2>';
+      echo '<p class="author">' . $author . '</p>';
+      echo '<p class="price">Цена: $' . $price . '</p>';
+      echo '<p class="duration">Длительность: ' . $duration . '</p>';
+      echo '</div>';
+      echo '<audio controls>';
+      echo '<source src="' . $musicFile . '" type="audio/mp3">';
+      echo 'Ваш браузер не поддерживает аудио.';
+      echo '</audio>';
+      echo '</div>';
+    }
+
+
+    $db = null;
+  ?>
+
+  </div>
+
+</body>
+</html>
